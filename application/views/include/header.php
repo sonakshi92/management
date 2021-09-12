@@ -13,28 +13,9 @@
 <div class="container">
     <nav class="navbar navbar-dark bg-warning">
         <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#"> User Event</a>
+            <div class="navbar-header col-lg-10">
+                
+                <a class="navbar-brand" href="#"> MANAGEMENT SYSTEM</a>
             </div>
-                <ul class="nav navbar-nav">
-                    <li class="active"> <?php  ?> </li>
-                   
-                 </ul>
-
-                <ul class="nav navbar-nav navbar-right">
-                    <li><?php echo anchor('admin/asignup', 'Admin Sign Up')?></li>
-                    <li><?php echo anchor('admin/usignup', 'User Sign Up')?></li>
-                    <li><?php echo anchor('admin/logout', 'admin Logout')?></li>
-
-                    <li><?php echo anchor('user/logout', ' user Logout')?></li>
-
-
-                    <li><?php echo anchor('admin/asignin', 'Admin Login')?></li>
-                    <li><?php echo anchor('user/usignin', 'User Login')?></li>
-
-                </ul>
-         </div>
-           
-         
-
-</nav>
+        </div>
+    </nav>
