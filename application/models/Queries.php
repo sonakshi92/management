@@ -7,6 +7,13 @@ class Queries extends CI_Model{
          }
     }
 
+    public function getColleges(){
+        $colleges = $this->db->get('tbl_college');
+        if($colleges->num_rows() > 0) {
+            return $colleges->result();
+         }
+    }
+
     public function registerAdmin($data){
         return $this->db->insert('tbl_users', $data);
     }
@@ -31,6 +38,18 @@ class Queries extends CI_Model{
         return $this->db->insert('tbl_college', $data);
     }
 
+    public function registerCoadmin($data){
+        return $this->db->insert('tbl_users', $data);
+    }
+
+    public function viewAllColleges(){
+        $this->db->select('*');
+        $this->db->from('tbl_college');
+        $this->db->join('tbl_users', 'tbl_users.college_id = tbl_college.college_id');
+        $this->db->join('tbl_roles', 'tbl_roles.role_id = tbl_users.role_id');
+        $users = $this->db->get();
+        return $users->result();
+    }
 
 }
 ?>

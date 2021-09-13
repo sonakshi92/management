@@ -8,7 +8,7 @@
     <?php echo anchor("admin/addStudent", "ADD STUDENT", ['class'=>'btn btn-primary']); ?>
     <hr>
     <div class="row">
-        <table>
+        <table class="table table-striped">
             <thead>
                 <tr>
                     <th scope="col"> ID </th>
@@ -22,10 +22,26 @@
                 </tr>
             </thead>
             <tbody>
+                <?php if(count($users)): ?>
+                    <?php foreach($users as $user): ?>
                 <tr class="table-active">
-                    <td>vsddsfsd</td>
-
+                    <td> <?php echo $user->college_id; ?> </td>
+                    <td> <?php echo $user->collegename; ?> </td>
+                    <td> <?php echo $user->username; ?> </td>
+                    <td> <?php echo $user->email; ?> </td>
+                    <td> <?php echo $user->rolename; ?> </td>
+                    <td> <?php echo $user->gender; ?> </td>
+                    <td> <?php echo $user->branch; ?> </td>
+                    <td>
+                        <?php echo anchor("admin/viewCollege", "VIEW", ['class'=>'btn btn-primary']); ?> 
+                    </td>
                 </tr>
+                <?php endforeach; ?>
+                <?php else: ?>
+                    <tr>
+                        <td> NO RECORD FOUND </td>
+                    </tr>
+                <?php endif; ?>
             </tbody>
         </table>
     </div>

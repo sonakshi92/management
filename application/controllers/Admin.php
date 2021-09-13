@@ -3,7 +3,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Admin extends MY_Controller {
     public function dashboard(){
-        $this->load->view('dashboard');
+		$this->load->model('queries');
+		$users = $this->queries->viewAllColleges();
+		//echo '<pre>';
+		//print_r($users);
+        $this->load->view('dashboard', ['users' => $users]);
     }
 
     public function addCollege(){
@@ -37,11 +41,13 @@ class Admin extends MY_Controller {
     public function addCoadmin(){
         $this->load->model('queries');
 		$roles = $this->queries->getRoles();
-		$this->load->view('addCoadmin', ['roles'=>$roles]);
+		$colleges = $this->queries->getColleges();
+		$this->load->view('addCoadmin', ['roles'=>$roles, 'colleges'=>$colleges]);
     }
 
     public function createCoadmin(){
         $this->form_validation->set_rules('username', 'Username', 'required');
+		$this->form_validation->set_rules('college_id', 'College Name', 'required');
 		$this->form_validation->set_rules('email', 'Email', 'required');
 		$this->form_validation->set_rules('gender', 'Gender', 'required');
 		$this->form_validation->set_rules('role_id', 'Role', 'required');
@@ -55,13 +61,13 @@ class Admin extends MY_Controller {
 			$data['confpwd'] = sha1($this->input->post('confpwd'));
 			//print_r($data);
 			$this->load->model('queries');
-			if($this->queries->registerAdmin($data)){
-				$this->session->set_flashdata('message', 'Admin Registered successfully');
-				return redirect("welcome/adminRegister");
+			if($this->queries->registerCoadmin($data)){
+				$this->session->set_flashdata('message', 'Co Admin Registered successfully');
 			} else{
-				$this->session->set_flashdata('message', 'Admin Registered Failed');
-				return redirect("welcome/adminRegister");
+				$this->session->set_flashdata('message', 'Failed to register Admin');
 			}
+			return redirect("admin/addCoadmin");
+
 		} else{
 			$this->addCoadmin();
 //			echo validation_errors();
