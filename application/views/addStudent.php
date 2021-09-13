@@ -87,7 +87,7 @@
         </div>
         
         <button type="submit" class="btn btn-primary"> ADD STUDENT </button>
-    <?php echo anchor("welcome", "BACK", ['class'=>'btn btn-primary']); ?>
+    <?php echo anchor("admin/dashboard", "BACK", ['class'=>'btn btn-primary']); ?>
 
         </div>
     </div>

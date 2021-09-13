@@ -8,6 +8,14 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style type="text/css">
+        .buttons{
+            color: #2196f3;
+            border: 1px solid #cabdbd;
+            border-radius: 5px;
+            padding: 2px 10px;
+        }
+    </style>
 </head>
 <body>
 <div class="container">

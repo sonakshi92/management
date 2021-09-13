@@ -101,6 +101,12 @@ class Admin extends MY_Controller {
 		}
 	}
 
+	public function viewStudents($college_id){
+		$this->load->model('queries');
+		$students = $this->queries->getStudents($college_id);
+		$this->load->view('viewStudents', ['students' => $students]);
+	}
+
     public function __construct(){
         parent::__construct();
         if( !$this->session->userdata("user_id") )

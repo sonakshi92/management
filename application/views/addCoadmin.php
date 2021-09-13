@@ -120,7 +120,7 @@
         
         
         <button type="submit" class="btn btn-primary"> ADD CO-ADMIN </button>
-    <?php echo anchor("welcome", "BACK", ['class'=>'btn btn-primary']); ?>
+    <?php echo anchor("admin/dashboard", "BACK", ['class'=>'btn btn-primary']); ?>
 
         </div>
     </div>

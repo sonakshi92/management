@@ -33,7 +33,7 @@
                     <td> <?php echo $user->gender; ?> </td>
                     <td> <?php echo $user->branch; ?> </td>
                     <td>
-                        <?php echo anchor("admin/viewCollege", "VIEW", ['class'=>'btn btn-primary']); ?> 
+                        <?php echo anchor("admin/viewStudents/{$user->college_id}", "View Students", ['class'=>'buttons']); ?> 
                     </td>
                 </tr>
                 <?php endforeach; ?>
