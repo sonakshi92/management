@@ -62,6 +62,8 @@ class Welcome extends MY_Controller {
 	}
 
 	public function login(){
+		if( $this->session->userdata("user_id") )
+			return redirect("admin/dashboard");
 		$this->load->view('login');
 	}
 
@@ -94,4 +96,12 @@ class Welcome extends MY_Controller {
 			$this->login();
 		}
 	}
+
+	public function logout(){
+		$this->session->unset_userdata("user_id");
+		return redirect("welcome/login");
+
+	}
+
+
 }

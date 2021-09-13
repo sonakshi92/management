@@ -14,8 +14,19 @@
     <nav class="navbar navbar-dark bg-warning">
         <div class="container-fluid">
             <div class="navbar-header col-lg-10">
-                
-                <a class="navbar-brand" href="#"> MANAGEMENT SYSTEM</a>
+                <a href="" class="navbar-brand" style="color: blue;"> MANAGEMENT SYSTEM </a>
+            </div>
+            <div class="col-lg-2" style="margin-top:15px;" id="bs-example-navbar-collapse-2">
+                <div class="btn-group">
+                    <a href="#" class="btn btn-default"> Settings </a>
+                    <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="carnet"></span></a>
+                    <ul class="dropdown-menu">
+                        <li> <?php echo anchor("admin/dashboard", 'Dashboard'); ?> </li>
+                        <li> <?php echo anchor("welcome/logout", 'Logout'); ?> </li>
+
+                    </ul>
+
+                </div>
             </div>
         </div>
     </nav>

@@ -26,5 +26,11 @@ class Queries extends CI_Model{
             return $chkAdmin->row();
         }
     }
+
+    public function makeCollege($data){
+        return $this->db->insert('tbl_college', $data);
+    }
+
+
 }
 ?>
