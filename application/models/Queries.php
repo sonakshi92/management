@@ -51,5 +51,9 @@ class Queries extends CI_Model{
         return $users->result();
     }
 
+    public function insertStudent($data){
+        return $this->db->insert('tbl_student', $data);
+    }
+
 }
 ?>

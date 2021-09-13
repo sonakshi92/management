@@ -8,19 +8,19 @@
                 </div>
             </div>
             <?php endif; ?>
-        <h1> ADD CO ADMIN </h1>
+        <h1> ADD STUDENT </h1>
         <hr>
         <div class="row">
             <div class="col-md-6">
             <div class="form-group">
-                <label class="col-md-3 control-label">Username </label>
+                <label class="col-md-3 control-label">Student Name </label>
                 <div class="col-md-9">
-                    <?php echo form_input(['name' => 'username', 'class' => 'form-control', 'placeholder' => 'Username', 'value' => set_value('username')]); ?>
+                    <?php echo form_input(['name' => 'studentname', 'class' => 'form-control', 'placeholder' => 'STUDENT NAME', 'value' => set_value('studentname')]); ?>
             </div>
             </div>
             </div>
             <div class="col-md-6">
-                <?php echo form_error('username', '<div class="text-danger">', '</div>'); ?>
+                <?php echo form_error('studentname', '<div class="text-danger">', '</div>'); ?>
             </div>
         </div>
 
@@ -75,51 +75,18 @@
     <div class="row">
             <div class="col-md-6">
             <div class="form-group">
-                <label class="col-md-3 control-label"> Role </label>
-                <select class="col-lg-9" name="role_id">
-                    <option value=""> Select </option>
-                    <?php if(count($roles)): ?>
-                        <?php foreach($roles as $role): ?>
-                    <option value="<?php echo $role->role_id ?>"> <?php echo $role->rolename ?> </option>
-                    <?php endforeach; endif; ?>
-                </select>
-            </div>
-        </div>
-        <div class="col-md-6">
-                <?php echo form_error('role_id', '<div class="text-danger">', '</div>'); ?>
-            </div>
-    </div>
-
-    <div class="row">
-            <div class="col-md-6">
-            <div class="form-group">
-                <label class="col-md-3 control-label">Password </label>
+                <label class="col-md-3 control-label"> Course </label>
                 <div class="col-md-9">
-                    <?php echo form_password(['name' => 'password', 'class' => 'form-control', 'placeholder' => 'Password']); ?>
+                    <?php echo form_input(['name' => 'course', 'class' => 'form-control', 'placeholder' => 'COURSE', 'value' => set_value('course')]); ?>
             </div>
             </div>
             </div>
             <div class="col-md-6">
-                <?php echo form_error('password', '<div class="text-danger">', '</div>'); ?>
+                <?php echo form_error('studentname', '<div class="text-danger">', '</div>'); ?>
             </div>
         </div>
-
-    <div class="row">
-        <div class="col-md-6">
-        <div class="form-group">
-            <label class="col-md-3 control-label"> Confirm Password </label>
-            <div class="col-md-9">
-                <?php echo form_password(['name' => 'confpwd', 'class' => 'form-control', 'placeholder' => 'Confirm Password']); ?>
-            </div>
-        </div>
-        </div>
-                <div class="col-md-6">
-                <?php echo form_error('confpwd', '<div class="text-danger">', '</div>'); ?>
-                </div>
- </div>
         
-        
-        <button type="submit" class="btn btn-primary"> ADD CO-ADMIN </button>
+        <button type="submit" class="btn btn-primary"> ADD STUDENT </button>
     <?php echo anchor("welcome", "BACK", ['class'=>'btn btn-primary']); ?>
 
         </div>

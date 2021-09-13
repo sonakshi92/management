@@ -15,7 +15,9 @@ class Admin extends MY_Controller {
     }
 
     public function addStudent(){
-        $this->load->view('addStudent');
+		$this->load->model('queries');
+		$colleges = $this->queries->getColleges();
+		$this->load->view('addStudent', ['colleges'=>$colleges]);
     }
 
     public function createCollege(){
@@ -73,6 +75,31 @@ class Admin extends MY_Controller {
 //			echo validation_errors();
 		}
     }
+
+	public function createStudent(){
+		$this->form_validation->set_rules('studentname', 'Student Name', 'required');
+		$this->form_validation->set_rules('college_id', 'College Name', 'required');
+		$this->form_validation->set_rules('email', 'Email', 'required');
+		$this->form_validation->set_rules('gender', 'Gender', 'required');
+		$this->form_validation->set_rules('course', 'Course', 'required');
+		$this->form_validation->set_error_delimiters('<div class="text-danger">', '</div>');
+		if($this->form_validation->run()){
+			$data = $this->input->post();
+			//echo 'Validation pass';
+			//print_r($data);
+			$this->load->model('queries');
+			if($this->queries->insertStudent($data)){
+				$this->session->set_flashdata('message', 'Student Added successfully');
+			} else{
+				$this->session->set_flashdata('message', 'Failed to add Student');
+			}
+			return redirect("admin/addStudent");
+
+		} else{
+			$this->addStudent();
+//			echo validation_errors();
+		}
+	}
 
     public function __construct(){
         parent::__construct();
