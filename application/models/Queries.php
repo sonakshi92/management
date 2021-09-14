@@ -67,5 +67,23 @@ class Queries extends CI_Model{
         return $students->result();
     }
 
+    public function getStudentRecord($id){
+        $this->db->select(['tbl_college.college_id', 'tbl_college.collegename',
+            'tbl_student.id', 'tbl_student.email', 'tbl_student.gender', 'tbl_student.studentname', 'tbl_student.course']);
+        $this->db->from('tbl_student');
+        $this->db->join('tbl_college', 'tbl_college.college_id = tbl_student.college_id');
+        $this->db->where(['tbl_student.id' => $id]);
+        $student = $this->db->get();
+        return $student->row();
+    }
+
+    public function updateStudent($data, $id){
+        return $this->db->where('id', $id)
+                        ->update('tbl_student', $data);
+    }
+
+    public function removeStudent($id){
+        return $this->db->delete('tbl_student', ['id' => $id]);
+    }
 }
 ?>

@@ -107,6 +107,45 @@ class Admin extends MY_Controller {
 		$this->load->view('viewStudents', ['students' => $students]);
 	}
 
+	public function editStudent($id){
+		$this->load->model('queries');
+		$colleges = $this->queries->getColleges();
+		$studentData = $this->queries->getStudentRecord($id);
+		//echo '<pre>'; print_r($studentData);
+		$this->load->view('editStudent', ['colleges' => $colleges, 'studentData' => $studentData]);
+	}
+
+	public function modifyStudent($id){
+        $this->form_validation->set_rules('studentname', 'Student Name', 'required');
+		$this->form_validation->set_rules('college_id', 'College Name', 'required');
+		$this->form_validation->set_rules('email', 'Email', 'required');
+		$this->form_validation->set_rules('gender', 'Gender', 'required');
+		$this->form_validation->set_rules('course', 'Course', 'required');
+		$this->form_validation->set_error_delimiters('<div class="text-danger">', '</div>');
+		if($this->form_validation->run()){
+			$data = $this->input->post();
+			//echo 'Validation pass';
+			//print_r($data);
+			$this->load->model('queries');
+			if($this->queries->updateStudent($data, $id)){
+				$this->session->set_flashdata('message', 'Student Update successfully');
+			} else{
+				$this->session->set_flashdata('message', 'Failed to update Student');
+			}
+			return redirect("admin/editStudent/{$id}");
+
+		} else{
+			$this->editStudent();
+//			echo validation_errors();
+		}
+    }
+
+	public function deleteStudent($id){
+		$this->load->model('queries');
+		if($this->queries->removeStudent($id)){
+			return redirect("admin/dashboard");
+		}
+	}
     public function __construct(){
         parent::__construct();
         if( !$this->session->userdata("user_id") )

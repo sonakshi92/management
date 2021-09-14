@@ -29,8 +29,8 @@
                     <td> <?php echo $student->email; ?> </td>
                     <td> <?php echo $student->gender; ?> </td>
                     <td>
-                        <?php echo anchor("admin/editStudents/{$student->id}", "Edit", ['class'=>'buttons']); ?> 
-                        <?php echo anchor("admin/deleteStudents/{$student->id}", "Delete", ['class'=>'buttons']); ?> 
+                        <?php echo anchor("admin/editStudent/{$student->id}", "Edit", ['class'=>'buttons']); ?> 
+                        <?php echo anchor("admin/deleteStudent/{$student->id}", "Delete", ['class'=>'buttons']); ?> 
                     </td>
                 </tr>
                 <?php endforeach; ?>
